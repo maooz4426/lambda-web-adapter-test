@@ -28,8 +28,6 @@ jobs:
           AWS_REGION: ${{ env.REGION }}
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v3.10.0
-        with:
-          registry-type: private
       - name: Build and push
         uses: docker/build-push-action@v6
         with:
