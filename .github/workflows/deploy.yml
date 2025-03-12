@@ -18,7 +18,7 @@ jobs:
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v4
         with:
-          role-to-assume: arn:aws:iam::590183858431:role/from_github_lambda_web_adapter_test
+          role-to-assume: arn:aws:iam::${{ secrets.AWS_ACCOUNT_ID }}:role/from_github_lambda_web_adapter_test
           aws-region: ${{ env.REGION }}
       - name: Login to Amazon ECR private
         id: login-ecr-private
@@ -34,6 +34,4 @@ jobs:
           push: true
           platforms: linux/arm64
           provenance: false
-          tags: 590183858431.dkr.ecr.ap-northeast-3.amazonaws.com/lambda-test:latest
-
-
+          tags: ${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.ap-northeast-3.amazonaws.com/lambda-test:latest
