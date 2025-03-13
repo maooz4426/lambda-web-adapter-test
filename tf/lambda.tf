@@ -1,7 +1,7 @@
 resource "aws_lambda_function" "lambda-web-adapter" {
   function_name = "lambda-web-adapter"
   image_uri = "${aws_ecr_repository.lambda-web-adapter.repository_url}:latest"
-  # role          = aws_iam_role.iam_for_lambda.arn
+  role          = aws_iam_role.iam_for_lambda.arn
   package_type  = "Image"
   architectures = ["arm64"]
 }
