@@ -35,3 +35,6 @@ jobs:
           platforms: linux/arm64
           provenance: false
           tags: ${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.ap-northeast-3.amazonaws.com/lambda-test:latest
+      - name: update for lambda
+        run: |
+          aws lambda update-function-code --function-name lambda-test --image-uri ${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.ap-northeast-3.amazonaws.com/lambda-test:latest
