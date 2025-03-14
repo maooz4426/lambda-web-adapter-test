@@ -16,7 +16,7 @@ resource "aws_iam_role" "from_github_lambda_web_adapter_test" {
         {
             "Effect": "Allow",
             "Principal": {
-                "Federated": "arn:aws:iam::590183858431:oidc-provider/token.actions.githubusercontent.com"
+                "Federated": aws_iam_openid_connect_provider.token_actions_github.arn
             },
             "Action": "sts:AssumeRoleWithWebIdentity",
             "Condition": {
